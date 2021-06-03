@@ -10,7 +10,7 @@ var button = d3.select("#filter-btn");
 // Select the form
 var form = d3.select("#form");
 
-// BONUS: Refactor to use Arrow Functions!
+// Loop through data.js and use d3 to append and update each cell
 tableData.forEach((ufoSiting) => {
     var row = tbody.append("tr");
     Object.entries(ufoSiting).forEach(([key, value]) => {
@@ -23,4 +23,16 @@ tableData.forEach((ufoSiting) => {
 button.on("click", runEnter);
 form.on("submit",runEnter);
 
+// Complete the event handler function for the form 
+function runEnter() {
+    // Prevent page from refreshing
+    event.preventDefault();
 
+    // Select the input element and get the raw HTML node
+    var inputElement = d3.select("#datetime");
+
+    // Get the value property of the input element
+    var inputValue = inputElement.property("value");
+
+    
+}
