@@ -11,8 +11,10 @@ var button = d3.select("#filter-btn");
 var form = d3.select("#form");
 
 // Loop through data.js and use d3 to append and update each cell
-function buildTable(data) {
-    tableData.forEach((ufoSiting) => {
+function buildTable(event) {
+    //Clear existing table
+    tbody.html("");
+    event.forEach((ufoSiting) => {
         var row = tbody.append("tr");
         Object.entries(ufoSiting).forEach(([key, value]) => {
         var cell = row.append("td");
@@ -20,6 +22,7 @@ function buildTable(data) {
         });
     });
 };
+
 // Create event handlers 
 button.on("click", runEnter);
 form.on("submit",runEnter);
@@ -44,7 +47,9 @@ function runEnter() {
     // Show filtered data
     console.log(filteredData);
 
-    //Set tbody to the inputValue
-    
-
+    //Put filteredData into build function
+    buildTable(filteredData);
 };
+
+// Build table using data.js
+buildTable(tableData);
