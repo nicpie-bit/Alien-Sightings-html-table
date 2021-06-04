@@ -33,16 +33,24 @@ function runEnter() {
     event.preventDefault();
 
     // Select the input element and get the raw HTML node
-    var inputElement = d3.select("#datetime");
+    var inputDate = d3.select("#datetime");
+    var inputCity = d3.select("#city");
+    var inputState = d3.select("#state");
+    var inputCountry = d3.select("#country");
+    var inputShape = d3.select("#shape");
 
     // Get the value property of the input element
-    var inputValue = inputElement.property("value");
+    var inputDateValue = inputDate.property("value");
+    var inputCityValue = inputCity.property("value");
+    var inputStateValue = inputState.property("value");
+    var inputCountryValue = inputCountry.property("value");
+    var inputShapeValue = inputShape.property("value");
 
     // Show what was inputted
     console.log(inputValue);
     
     //filter through data based on input
-    var filteredData = tableData.filter(entry => entry.datetime === inputValue);
+    var filteredData = tableData.filter(entry => entry.datetime === inputDateValue && entry.city === inputCityValue && entry.state === inputStateValue && entry.country === inputCountryValue && entry.shape === inputShapeValue);
     
     // Show filtered data
     console.log(filteredData);
