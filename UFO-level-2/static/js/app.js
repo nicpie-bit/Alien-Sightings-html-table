@@ -34,10 +34,10 @@ function runEnter() {
 
     // Select the input element and get the raw HTML node
     var inputDate = d3.select("#datetime");
-    var inputCity = d3.select("city");
-    var inputState = d3.select("state");
-    var inputCountry = d3.select("country");
-    var inputShape = d3.select("shape");
+    var inputCity = d3.select("#city");
+    var inputState = d3.select("#state");
+    var inputCountry = d3.select("#country");
+    var inputShape = d3.select("#shape");
 
     // Get the value property of the input element
     var inputDateValue = inputDate.property("value");
@@ -57,14 +57,11 @@ function runEnter() {
     var filteredDate = tableData.filter(entry => entry.datetime === inputDateValue);
     var filteredCity = tableData.filter(entry => entry.city === inputCityValue);
     var filteredState = tableData.filter(entry => entry.state === inputStateValue);
-    var fileteredCountry = tableData.filter(entry => entry.country === inputCountryValue);
+    var filteredCountry = tableData.filter(entry => entry.country === inputCountryValue);
     var filteredShape = tableData.filter(entry => entry.shape === inputShapeValue);
-    
-    // Show filtered data
-    console.log(filteredDate);
 
     //Put filteredData into build function
-    buildTable(filteredDate);
+    buildTable(filteredDate && filteredCity && filteredState && filteredCountry && filteredShape);
 };
 
 // Build table using data.js
