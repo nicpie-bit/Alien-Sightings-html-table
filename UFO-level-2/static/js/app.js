@@ -18,7 +18,7 @@ function buildTable(event) {
         var row = tbody.append("tr");
         Object.entries(ufoSiting).forEach(([key, value]) => {
         var cell = row.append("td");
-        cell.text(value);
+        cell.html(value);
         });
     });
 };
