@@ -54,7 +54,7 @@ function runEnter() {
     console.log(inputCountryValue);
     console.log(inputShapeValue);
     
-    //build array based input
+    //build array based on filter input
     var filter = [
         {type: "datetime", name: inputDateValue}, 
         {type: "city", name: inputCityValue}, 
