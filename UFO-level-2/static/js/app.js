@@ -54,26 +54,26 @@ function runEnter() {
     console.log(inputShapeValue);
     
     //filter through data based on input
-    filteredData = [
-        {type: "datetime", name: filteredDate}, 
-        {type: "city", name: filteredCity}, 
-        {type: "state", name: filteredState},
-        {type: "country", name: filteredCountry},
-        {type: "shape", name: filteredShape}
+    var filter = [
+        {type: "datetime", name: inputDateValue}, 
+        {type: "city", name: inputCityValue}, 
+        {type: "state", name: inputStateValue},
+        {type: "country", name: inputCountryValue},
+        {type: "shape", name: inputShapeValue}
     ];
 
-    //var results = data.filter(obj => Object.entries(filteredData));
+    //Go through tableData with filter
+    var filteredData = tableData.filter(sighting => filter.every(filterTable => sighting[filterTable.type] === filterTable.name));
     
-    //Put filteredData into build function
-    buildTable(filteredDate);
-    buildTable(filteredCity);
-    //buildTable(filteredState);
-    //buildTable(filteredCountry);
-    //buildTable(filteredShape);
-
-    //buildTable(filteredDate && filteredCity && filteredState && filteredCountry && filteredShape);
-    
-    //buildTable(filteredData)
+    //Build new table
+    filteredData.forEach(function(filteredSightings){
+        tbody.html("");
+        var row = tbody.append("tr");
+        Object.entries(filteredSightings).forEach(function([key, value]){
+            var cell = row.append("td");
+            cell.text(value);
+        });
+    });
 };
 
 // Build table using data.js
