@@ -54,21 +54,13 @@ function runEnter() {
     console.log(inputShapeValue);
     
     //filter through data based on input
-    var filteredDate = tableData.filter(entry => entry.datetime === inputDateValue);
-    var filteredCity = tableData.filter(entry => entry.city === inputCityValue);
-    //var filteredState = tableData.filter(entry => entry.state === inputStateValue);
-    //var filteredCountry = tableData.filter(entry => entry.country === inputCountryValue);
-    //var filteredShape = tableData.filter(entry => entry.shape === inputShapeValue);
-
-    //var filteredData = []
-
-    //filteredData = {
-        //"datetime": filteredDate, 
-        //"city": filteredCity, 
-        //"state": filteredState,
-        //"country": filteredCountry,
-        //"shape": filteredShape
-    //};
+    filteredData = [
+        {type: "datetime", name: filteredDate}, 
+        {type: "city", name: filteredCity}, 
+        {type: "state", name: filteredState},
+        {type: "country", name: filteredCountry},
+        {type: "shape", name: filteredShape}
+    ];
 
     //var results = data.filter(obj => Object.entries(filteredData));
     
