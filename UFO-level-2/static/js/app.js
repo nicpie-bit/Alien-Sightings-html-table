@@ -29,6 +29,7 @@ form.on("submit",runEnter);
 
 // Complete the event handler function for the form 
 function runEnter() {
+    tbody.html("");
     // Prevent page from refreshing
     event.preventDefault();
 
@@ -53,7 +54,7 @@ function runEnter() {
     console.log(inputCountryValue);
     console.log(inputShapeValue);
     
-    //filter through data based on input
+    //build array based input
     var filter = [
         {type: "datetime", name: inputDateValue}, 
         {type: "city", name: inputCityValue}, 
@@ -63,15 +64,17 @@ function runEnter() {
     ];
 
     //Go through tableData with filter
-    var filteredData = tableData.filter(sighting => filter.every(filterTable => sighting[filterTable.type] === filterTable.name));
-    
+    var filteredData = tableData.filter(sighting => filter.every(filterTable => {
+        if (filterTable.name === "") return true 
+        return sighting[filterTable.type] === filterTable.name
+    }));
+    console.log(filteredData)
     //Build new table
     filteredData.forEach(function(filteredSightings){
-        tbody.html("");
         var row = tbody.append("tr");
         Object.entries(filteredSightings).forEach(function([key, value]){
             var cell = row.append("td");
-            cell.text(value);
+            cell.html(value);
         });
     });
 };
